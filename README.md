@@ -13,3 +13,10 @@ ssh <login>@<ip_address>
 ```
 
 ## [Lien d'installation de docker sur le VPS](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository) 
+
+## Changer le mot de passe du vps
+
+`Sur le terminal linux du vps`
+```
+passwd
+```
