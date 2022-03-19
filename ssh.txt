@@ -1,0 +1,25 @@
+# Envoyer sa clé publique sur le serveur distant
+
+echo cle_publique >> authorized_key
+
+# Se connecter avec sa clé privé en ssh sur le serveur distant
+
+ssh-keygen
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@ip_address
+
+ssh user@ip_address 
+
+
+// Partie administration
+
+remarque : détacher la logique de l'ip du serveur avec l'ip du nom de domaine 
+
+-- pour tester le dns
+dig @ip_serveur nom_domaine
+
+pour le soa externe l'ip du serveur sera celui du conteneur qui va joindre dans bind le nom de domaine
+et faire la liaison avec l'ip du domaine
+
+
+
