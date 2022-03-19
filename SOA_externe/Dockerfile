@@ -13,6 +13,12 @@ COPY db.176 /etc/bind
 
 WORKDIR /etc/bind
 
+# creer le dossier pour les log et mettre l'utilisateur bind
+RUN mkdir /var/log/named
+RUN touch  /var/log/named/misc.log /var/log/named/query.log
+RUN chown -R root:bind /var/log/named
+RUN chown root:bind /etc/bind/rndc.key 
+
 EXPOSE 53/udp
 EXPOSE 53/tcp
 
