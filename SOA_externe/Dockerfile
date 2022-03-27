@@ -9,7 +9,7 @@ RUN apt install iputils-ping -y
 
 #Coput du fichier named.conf dans le dossier de config de bind
 COPY named.conf /etc/bind/named.conf
-COPY db.m1-3.ephec-ti.be /etc/bind/zones/db.m1-3.ephec-ti.be
+COPY db.m1-3.ephec-ti.be /etc/bind/db.m1-3.ephec-ti.be
 
 WORKDIR /etc/bind
 
