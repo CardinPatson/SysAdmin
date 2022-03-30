@@ -1,6 +1,6 @@
 $ORIGIN m1-3.ephec-ti.be.
 $TTL 86400      ; 1 day
-@           IN     SOA      ns.m1-3.ephec-ti.be.  c.tiakongouadje.students.ephec.be.(
+@           IN     SOA      ns.m1-3.ephec-ti.be.  Groupe-3.ephec-ti.be.(
                                 1          ; serial a incrementer a chaque fois qu'on fait une modification 
                                 21600      ; refresh (6 hours)
                                 3600       ; retry (1 hour)
@@ -9,5 +9,9 @@ $TTL 86400      ; 1 day
                                 )
 ;
 @           IN      NS      ns.m1-3.ephec-ti.be.
+            IN      MX  10  mail.m1-3.ephec-ti.be.
 @           IN      A       176.96.231.203
 ns          IN      A       176.96.231.203
+www         IN      A       176.96.231.201
+b2b         IN      A       176.96.231.204
+mail        IN      A       179.96.231.203
