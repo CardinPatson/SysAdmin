@@ -21,4 +21,4 @@ EXPOSE 53/TCP
 
 
 WORKDIR /etc/bind/
-CMD tail -f /dev/null
+CMD ["named", "-c", "/etc/bind/named.conf", "-g"]
