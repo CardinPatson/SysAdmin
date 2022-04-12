@@ -6,13 +6,13 @@ FLUSH PRIVILEGES;
 
 use mailbox;
 
-CREATE TABLE `virtual_domains` (
+CREATE TABLE 'domains' (
 `id` INT NOT NULL AUTO_INCREMENT,
-`name` VARCHAR(50) NOT NULL,
+`domain_name` VARCHAR(50) NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `virtual_users` (
+CREATE TABLE 'users' (
 `id` INT NOT NULL AUTO_INCREMENT,
 `domain_id` INT NOT NULL,
 `password` VARCHAR(106) NOT NULL,
@@ -20,5 +20,5 @@ CREATE TABLE `virtual_users` (
 `maildir` VARCHAR(120) NOT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `email` (`email`),
-FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
+FOREIGN KEY (domain_id) REFERENCES domains(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

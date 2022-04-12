@@ -1,0 +1,30 @@
+#SERVER IDENTITY
+myhostname = mail.m1-3.ephec-ti.be
+mydomain = m1-3.ephec-ti.be
+myorigin = $mydomain
+mydestination = $myhostname, localhost.$mydomain
+mynetworks=127.0.0.0/8 [::1]/128 [::ffff:127.0.0.0]/104
+
+smtpd_banner = $myhostname ESMTP $mail_name
+
+#CONFIGURATION DU CHIFFREMENT
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = no
+smtpd_tls_key_file =  /etc/ssl/private/certificatemail.key
+smtpd_tls_cert_file = etc/ssl/certs/certificatemail.crt
+smtpd_tls_session_cache_database =btree:/var/lib/postfix/smtpd_scache
+smtp_tls_session_cache_database = btree:/var/lib/postfix/smtp_scache
+
+relayhost =
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+smtpd_sasl_local_domain =
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+broken_sasl_auth_clients = yes
+smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination
+smtpd_tls_auth_only = no
+smtp_use_tls = yes
+smtpd_use_tls = yes
+smtp_tls_note_starttls_offer = yes
