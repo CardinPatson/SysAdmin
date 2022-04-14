@@ -9,33 +9,33 @@ RUN apt upgrade -y
 
 RUN apt install nano mutt telnet mailutils net-tools -y
 #INSTALL SERVER MYSQL
-# RUN apt install mysql-server -y
+RUN apt install mysql-server -y
 
-# #CONFIGURE DATABASE OF MAIL AND USER
+#CONFIGURE DATABASE OF MAIL AND USER
 
-# #CONFIGURE SSL CERTIFICATE
-# RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/private/certificatemail.key -x509 -days 365 -out /etc/ssl/certs/certificatemail.crt -subj "/C=BE/ST=Braban/L=Louvain-La-Neuve/O=EPHEC/OU=IT/CN=mail.m1-3.ephec-ti.be"
-# RUN apt update
-# RUN apt install spamassassin spamc
+#CONFIGURE SSL CERTIFICATE
+RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/private/dovecot.key -x509 -days 365 -out /etc/ssl/certs/dovecot.pem -subj "/C=BE/ST=Braban/L=Louvain-La-Neuve/O=EPHEC/OU=IT/CN=mail.m1-3.ephec-ti.be"
+RUN apt update
+RUN apt install spamassassin spamc
 
-# #CONFIGURE DOVECOT
+#CONFIGURE DOVECOT
 
-# #1.INSTALL
-# RUN apt install dovecot-imapd dovecot-pop3d dovecot-core -y
-# RUN apt install dovecot-mysql
-# #RUN apt install 
+#1.INSTALL
+RUN apt install dovecot-imapd dovecot-pop3d dovecot-core -y
+RUN apt install dovecot-mysql
+#RUN apt install 
 
-# #2. COPIE DES FICHIERS
-# RUN mkdir /var/log/dovecot.log
-# RUN dovecot/dovecot.conf /etc/dovecot/dovecot.conf
-# RUN dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
-# RUN dovecot/dovecot-dict-sql.conf.ext /etc/dovecot/dovecot-dict-sql.conf.ext
+#2. COPIE DES FICHIERS
+RUN mkdir /var/log/dovecot.log
+RUN dovecot/dovecot.conf /etc/dovecot/dovecot.conf
+RUN dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
+RUN dovecot/dovecot-dict-sql.conf.ext /etc/dovecot/dovecot-dict-sql.conf.ext
 
-# RUN dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
-# RUN dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10.master.conf 
-# RUN dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
-# RUN dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
-# RUN dovecot/conf.d/10-logging.conf /etc/dovecot/conf.d/10-logging.conf
+RUN dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
+RUN dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10.master.conf 
+RUN dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
+RUN dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
+RUN dovecot/conf.d/10-logging.conf /etc/dovecot/conf.d/10-logging.conf
 
 # #CONFIGURE POSTFIX 
 
