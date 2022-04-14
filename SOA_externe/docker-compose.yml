@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  soa-externe:
+    build: .
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./SOA_externe/named.conf:/etc/bind/named.conf
+      - ./SOA_externe/db.m1-5.ephec-ti.be:/etc/bind/db.m1-5.ephec-ti.be
+    #rajouter un networks si possible 
+    container_name: soa_externe_container
