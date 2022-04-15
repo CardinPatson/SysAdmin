@@ -1,0 +1,5 @@
+user = woody
+password = hypersecurise
+dbname = mail
+query = SELECT destination FROM forwardings WHERE source='%s'
+hosts = 127.0.0.1

@@ -1,0 +1,5 @@
+user = woody
+password = hypersecurise
+dbname = mailbox
+query = SELECT foldermail FROM users WHERE username='%s'
+hosts = 127.0.0.1
