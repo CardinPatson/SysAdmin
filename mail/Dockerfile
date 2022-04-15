@@ -7,7 +7,7 @@ RUN apt upgrade -y
 #NE PAS OUBLIER DE SPECIFIER 172.96.231.209 mail.m1-3.ephec-ti.be mail DANS LE FICHIER /etc/hosts
 #PEUT ETRE FAIT AVEC LE DOCKER COMPOSE YML
 
-RUN apt install nano mutt telnet mailutils net-tools -y
+RUN apt install nano mutt telnet mailutils bsd-mailx net-tools -y
 #INSTALL SERVER MYSQL
 RUN apt install mysql-server -y
 

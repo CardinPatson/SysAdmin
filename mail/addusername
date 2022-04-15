@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#B=bleu/N=classique/M=mauve/R=rouge/Y=jaune
+R="\033[0;31m"  #Rouge
+G="\033[0;32m"  #Vert
+B="\033[0;34m"  #Bleu
+Y="\033[0;33m" #jaune
+NC='\033[0m' # No Color
+
+# domain name
+domain="m1-3.ephec-ti.be"
+
+# demande du nom
+
+echo -e "${R}Entrez votre  Nom ?${NC}"
+echo -e "${G}-------------------${NC}\n"
+read first
+
+#CONVERT TO LOWER CASE
+firstname=$(echo "$first" | tr '[:upper:]' '[:lower:]')
+
+# demande du prenom
+echo -e "${R}Entrez votre Prenom ?${NC}"
+echo -e "${G}-----------------------${NC}\n"
+read last
+lastname=$(echo "$last" | tr '[:upper:]' '[:lower:]')
+
+fullname="$firstname.$lastname"
+username="$firstname.$lastname@m1-3.ephec-ti.be"
+
+# demande du password
+
+echo -e "${R}Entrez votre Mot de passe ?${NC}"
+echo -e "${G}---------------------------${NC}\n"
+read -s password
+l=${#password}
+length=$((l-3))
+pass=""
+
+#met autant detoile quil ya de caractere sur le mot de passe
+while [ ${#pass} -lt $length ]
+do
+        pass+="*"
+done
+
+firstPass="${password::1}"
+lastPass="$(echo "$c" |tail -c 3)"
+
+echo -e "${Y} Mail${NC} : ${B}$username${NC}"
+echo -e "${Y} MDP${NC} : ${B}$firstPass$pass$lastPass${NC}"
+
+# SQL stocke les ID dans un fichier email.txt pour pas de redondance
+email=$(mysql -u root -N <<MY_QUERY
+USE mailbox
+SELECT username FROM users
+ORDER BY id
+MY_QUERY
+)
+echo "$email" > email.txt
+
+echo `cat email.txt`
+echo "$username"
+
+## Verifie si l'id est bien là
+if grep -q $username email.txt; then
+echo "email already assigned, try again"
+$(rm email.txt)
+exit 1
+else
+# Script d'ajout du nouvel utilisateur
+az='$6$'
+echo "use mailbox" > script.sql
+echo "INSERT INTO \`users\`" >> script.sql
+echo "(\`id\`, \`username\`, \`password\` , \`domain\`, \`foldermail\`)" >> script.sql
+echo -e "VALUES" >> script.sql
+echo -e "('0', '$username', MD5('$password'), '$domain', '$domain/$fullname/');" >> script.sql
+mysql -u root <<MY_QUERY
+SOURCE script.sql
+MY_QUERY
+*sleep 1
+# Verification si bien dans la DB
+show=$(mysql -u root -t <<MY_QUERY
+USE mailbox
+SELECT id, username AS "Adresse Mail", password AS "Mot de passe Crypte" FROM users
+ORDER BY id
+MY_QUERY
+)
+echo -e "${G}$show${NC}\n"
+$(rm email.txt script.sql)
+exit 1
+fi
