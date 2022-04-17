@@ -21,9 +21,8 @@ mail        IN      A       176.96.231.203
 
 @       IN      TXT     "v=spf1 include:mail.m1-3.ephec-ti.be ip4:176.96.231.203 -all"
 
-default._domainkey      IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; "
-          "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwnC8RCsusTsxRfZvj4PrB9TZqlm2tdxyZ2o6+HroUfqvMnIwUeCZkTDHKv/YisRPrSzPF+gkBN4F7yWflKYkRHh+32xs+z1bEWaC0CmBZ+xbNPAayrGj+VJm56UeeN5yCHxWI60TMGp0eZvBInvZ/NFbSezTgNCuJdN2FqJ8sPgG+xpOlbEkUfRFjURAU0QZgX1EeJ7t4ItCMW"
-          "xT6sFZBMcinp1GrzK5cgEI9iTfcbpLYbZ4XIUYQeLJ2nab3abEtezNgFV052XM617VKFKaKLHEJ5H0+mtywNSClOqtkb1MkdxU4LqDjV4V10FvRXDAQij2KRY3+3cWD1d8YgaHLwIDAQAB" )  ; ----- DKIM key default for m1-3.ephec-ti.be
+dkimkey._domainkey      IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; " "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3d5PvPbNq9CWbCpT70Fqxxe58AT/of9PBLPKPfwM6i20FXj48BrDjCpzlkyaErs/aIVCjAuADmCkGUNVedaOVLQE3r2jXBYplwPt0B037o3autKe6+em61weUN0OWqAcsBMgjnjOjjX6gf0F8cj9ZNtmNWzB3Vsb6V0ocSsUQ9dtgmnrJKj16wt5V83QjF2t1WqTVvOD0oLcPx"
+          "PKmLmWaSd05dRTczJ9HY5l15aZQkhEkDAti6aONotKzEyVHZY1+B2Q69Rns+XNNoTb78GjhazXBbNB7cZ4Q/RXzxQpQWXlYSmb2+7D9QziXl6i/gfhQxwGHIKYBdLuH7fKDd4DNQIDAQAB" )  ;
 
 _dmarc          IN      TXT     "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@m1-3.ephec-ti.be"
 

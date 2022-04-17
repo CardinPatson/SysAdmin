@@ -64,7 +64,7 @@ driver = mysql
 #   Note that currently you can't use spaces in parameters.
 #
 # sqlite:
-#   The path to the database file. 
+#   The path to the database file.
 #
 # Examples:
 #   connect = host=192.168.1.1 dbname=users
@@ -79,6 +79,7 @@ connect = host=127.0.0.1 dbname=mailbox user=woody password=hypersecurise
 # http://wiki2.dovecot.org/Authentication/PasswordSchemes
 #
 default_pass_scheme = MD5
+#default_pass_scheme = SHA512
 
 # passdb query to retrieve the password. It can return fields:
 #   password - The user's password. This field must be returned.
@@ -107,9 +108,9 @@ default_pass_scheme = MD5
 #   password_query = SELECT userid AS user, pw AS password \
 #     FROM users WHERE userid = '%u' AND active = 'Y'
 #
-password_query = \
-  SELECT username, domain, password \
-  FROM users WHERE username = '%u' AND domain = '%d'
+#password_query = \
+#  SELECT username, domain, password \
+#  FROM users WHERE username = '%n' AND domain = '%d'
 
 # userdb query to retrieve the user information. It can return fields:
 #   uid - System UID (overrides mail_uid setting)
@@ -135,10 +136,7 @@ password_query = \
 # userdb prefetch instead of userdb sql in dovecot.conf. In that case you'll
 # also have to return userdb fields in password_query prefixed with "userdb_"
 # string. For example:
-#password_query = \
-#  SELECT userid AS user, password, \
-#    home AS userdb_home, uid AS userdb_uid, gid AS userdb_gid \
-#  FROM users WHERE userid = '%u'
+password_query = SELECT username AS user, password FROM users WHERE username = '%u'
 
 # Query to get a list of all usernames.
 #iterate_query = SELECT username AS user FROM users

@@ -1,7 +1,9 @@
 create database mailbox;
 CREATE USER 'woody'@'localhost' IDENTIFIED BY 'hypersecurise';
 GRANT ALL PRIVILEGES ON mailbox.* to 'woody'@'localhost' WITH GRANT OPTION ;
-FLUSH PRIVILEGES;
+--reload database
+FLUSH PRIVILEGES; 
+
 use mailbox;
 
 CREATE TABLE 'domains'(
