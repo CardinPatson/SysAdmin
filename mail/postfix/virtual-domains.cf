@@ -2,5 +2,5 @@
 user = woody
 password = hypersecurise
 dbname = mailbox
-query = SELECT domain AS virtual FROM domains WHERE domain='%s'
+query = SELECT 1 FROM domains WHERE domain='%s'
 hosts = 127.0.0.1

@@ -1,0 +1,5 @@
+user = woody
+password = hypersecurise
+host = 127.0.0.1
+dbname = mailbox
+query = SELECT username FROM users WHERE username='%s'
