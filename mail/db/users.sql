@@ -6,7 +6,7 @@ VALUES
 INSERT INTO 'mailbox'.'users'
 ('id', 'username' , 'password' ,  'domain', 'foldermail')
 VALUES
-('1','cardin@m1-3.ephec-ti.be', ENCRYPT('password1', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) ,'m1-3.ephec-ti.be', 'm1-3.ephec-ti.be/cardin/');
+('1','cardin@m1-3.ephec-ti.be', MDA() ,'m1-3.ephec-ti.be', 'm1-3.ephec-ti.be/cardin/');
 
 INSERT INTO 'mailbox'.'users'
 ('id', 'username', 'password' , 'domain',  'foldermail')

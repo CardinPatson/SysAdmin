@@ -1,0 +1,25 @@
+
+rewrite_header Subject [*****SPAM*****]
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+required_score 5.0
+
+
+#   Use Bayesian classifier (default: 1)
+#
+use_bayes 1
+
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+bayes_auto_learn 1
+
+
+#   Some shortcircuiting, if the plugin is enabled
+# 
+ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
+
+
+endif # Mail::SpamAssassin::Plugin::Shortcircuit
