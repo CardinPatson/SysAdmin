@@ -27,3 +27,6 @@ dkimkey._domainkey      IN      TXT     ( "v=DKIM1; h=sha256; k=rsa; " "p=MIIBIj
 _dmarc          IN      TXT     "v=DMARC1; p=none; pct=100; rua=mailto:dmarc-reports@m1-3.ephec-ti.be"
 
 smtp        IN      CNAME   mail
+
+$INCLUDE "/etc/bind/keys/m1-3.ephec-ti.be.zsk.key" ;
+$INCLUDE "/etc/bind/keys/m1-3.ephec-ti.be.ksk.key" ;
