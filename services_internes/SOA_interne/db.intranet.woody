@@ -1,0 +1,16 @@
+$ORIGIN intranet.woody.
+$TTL 86400      ; 1 day
+@                       IN SOA  ns.intranet.woody. marina.m1-3.ephec-ti.be. (
+                                1          ; serial
+                                21600      ; refresh (6 hours)
+                                3600       ; retry (1 hour)
+                                604800     ; expire (1 week)
+                                86400      ; minimum (1 day)
+                                )
+;
+@               IN      NS      ns.intranet.woody.
+
+ns              IN      A       176.96.231.202
+mail            IN      A       176.96.231.203
+voip            IN      A       176.96.231.201
+www             IN      A       176.96.231.202
