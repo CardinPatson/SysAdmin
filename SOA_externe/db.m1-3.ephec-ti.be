@@ -17,6 +17,9 @@ b2b         IN      A       176.96.231.201
 
 mail        IN      A       176.96.231.203
 
+;Record PTR pour SMTP
+176.96.231.203.in-addr.arpa. IN PTR smtp.m1-3.ephec-ti.be
+
 ;Records DKIM,DMARC
 
 @       IN      TXT     "v=spf1 include:mail.m1-3.ephec-ti.be ip4:176.96.231.203 -all"
