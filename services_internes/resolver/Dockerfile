@@ -1,12 +1,20 @@
 FROM ubuntu:latest
 
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install nano -y
+RUN apt-get install bind9 bind9utils dnsutils net-tools -y
+RUN apt-get install iputils-ping -y
 
-RUN apt-get update -y && apt-get upgrade -y
-RUN apt install -y bind9 dnsutils
-RUN apt install -y nano
-RUN apt install -y iputils-ping
-RUN apt install -y net-tools
 
 WORKDIR /etc/bind
 
-CMD tail -f /dev/null
+EXPOSE 53/udp
+EXPOSE 53/tcp
+
+COPY named.conf /etc/bind/named.conf
+
+RUN mkdir /var/log/named
+RUN touch /var/log/named/misc.log /var/log/named/query.log
+RUN chown -R root:bind /var/log/named
+
+CMD ["named" , "-c" , "/etc/bind/named.conf" , "-g"]

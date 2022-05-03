@@ -33,6 +33,7 @@ RUN useradd -g vmail -u 5000 vmail -d /var/mail
 RUN chown -R vmail:vmail /var/mail
 
 #DOVECOT
+RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/private/dovecot.key -x509 -days 365 -out /etc/ssl/certs/dovecot.pem -subj "/C=BE/ST=Braban/L=Louvain-La-Neuve/O=EPHEC/OU=IT/CN=mail.m1-3.ephec-ti.be"
 RUN  apt install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql-y
 COPY dovecot/dovecot.conf /etc/dovecot/dovecot.conf
 COPY dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
@@ -41,7 +42,6 @@ COPY dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
 COPY dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 
-RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/private/dovecot.key -x509 -days 365 -out /etc/ssl/certs/dovecot.pem -subj "/C=BE/ST=Braban/L=Louvain-La-Neuve/O=EPHEC/OU=IT/CN=mail.m1-3.ephec-ti.be"
 #CONFIGURE SSL CERTIFICATE
 # RUN apt update
 # RUN apt install spamassassin spamc
@@ -77,14 +77,5 @@ RUN chmod -R 755 /etc/postfix
 # RUN dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 # RUN dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 # RUN dovecot/conf.d/10-logging.conf /etc/dovecot/conf.d/10-logging.conf
-
-# #CONFIGURE POSTFIX 
-
-# #1.INSTALL 
-# RUN apt install postfix postfix-mysql
-# COPY postfix/main.cf /etc/postfix/main.cf
-# COPY postfix/master.cf /etc/postfix/master.cf
-# #COPY
-# #COPY
 
 ENTRYPOINT [ "tail" ,"-f" , "/dev/null" ]
