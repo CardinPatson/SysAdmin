@@ -1,0 +1,9 @@
+192.168.1.0 -- Hangar et Atelier
+
+192.168.2.0 -- Compta
+
+192.168.3.0 -- Commerciaux
+
+192.168.4.0 -- Secretariat
+
+192.168.5.0 -- Direction
