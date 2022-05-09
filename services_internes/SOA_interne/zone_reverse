@@ -1,0 +1,14 @@
+$ORIGIN 0.16.172.in-addr.arpa.
+$TTL 86400
+@               IN     SOA      ns.m1-3.ephec-ti.be.     contact.m1-3.ephec-ti.be. (
+                                1          ; serial a incrementer a chaque modification 
+                                21600      ; refresh (6 hours)
+                                3600       ; retry (1 hour)
+                                604800     ; expire (1 week)
+                                86400      ; minimum (1 day)
+
+@       IN     NS     	ns.m1-3.ephec-ti.be. ; représente le serveur dns de la zone
+
+1		       PTR		resolv.m1-3.ephec-ti.be.
+2		       PTR		ns.m1-3.ephec-ti.be.
+3		       PTR		db.m1-3.ephec-ti.be.
