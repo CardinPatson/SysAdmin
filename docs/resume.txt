@@ -25,24 +25,24 @@ DNS externe
 WEB
 -----
 
-Page web statique pour prouver que l'infracstruture fonctionne (lien entre serveur web et BDD)
+Page web statique pour prouver que l'infrastructure fonctionne (lien entre serveur web et BDD)
 
 Mail
 -----
 
--->Valider dabord l'envoie de mail entre employés
+-->Valider d'abord l'envoi de mail entre employés
 -->puis depuis 2 postes du réseau interne
--->puis l'envoie de mail vers l'extérieur
+-->puis l'envoi de mail vers l'extérieur
 -->puis celui d'un mail envoyé depuis l'extérieur vers une addresse woodytoys
 
 
 Contrainte d'implémentation
 ----------------------------
 
-Les services doivent être implémenté sous forme de Dockerfiles qui doivent être hébergé sur github --> Le répo doit être lié à un compte dockerhub du groupe pour que chaque service soit déployable en ligne de commande (docker run -d ephecGR1/mail)
+Les services doivent être implémentés sous forme de Dockerfiles qui doivent être hébergés sur github --> Le répo doit être lié à un compte dockerhub du groupe pour que chaque service soit déployable en ligne de commande (docker run -d ephecGR1/mail)
 
 
-Différent service 
+Différents services
 -----------------
 
 DNS public 
