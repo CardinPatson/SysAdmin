@@ -1,0 +1,17 @@
+$ORIGIN 0.168.192.in-addr.arpa.
+
+$TTL 86400 ; 1 day
+@       IN      SOA     ns.intranet.woody. marina.quadu.ephec-ti.be. (
+        2 ; serial
+        43200 ; refresh (12 hours)
+        3600 ; retry time in case of a problem (1 hours)
+        604800 ; expiration time (1 weeks)
+        86400 ; minimum (1 day)
+ )
+;
+@               IN      NS      ns.intranet.woody.
+
+2               IN      PTR     ns.intranet.woody.
+2               IN      PTR     www.intranet.woody.
+4               IN      PTR     samba.intranet.woody.
+5               IN      PTR     resolver.intranet.woody.
