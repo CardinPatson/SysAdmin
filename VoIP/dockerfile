@@ -5,11 +5,13 @@ RUN apt-get install vim nano dnsutils net-tools asterisk -y
 
 
 COPY config/asterisk.conf /etc/asterisk/asterisk.conf
-COPY config/extensions.conf /etc/asterisk/extensions.conf
-COPY config/users.conf /etc/asterisk/users.conf
 COPY config/sip.conf /etc/asterisk/sip.conf
+COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/voicemail.conf /etc/asterisk/voicemail.conf
+COPY config/users.conf /etc/asterisk/users.conf
+COPY config/rtp.conf /etc/asterisk/rtp.conf
 
-EXPOSE 5060/tcp 5060/udp
+EXPOSE 5060/UDP
+EXPOSE 10000-10020/UDP
 
 ENTRYPOINT [ "/usr/sbin/asterisk", "-f" ]
