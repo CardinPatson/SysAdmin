@@ -42,9 +42,6 @@ COPY dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
 COPY dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf
 COPY dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
 
-#CONFIGURE SSL CERTIFICATE
-# RUN apt update
-# RUN apt install spamassassin spamc
 
 # #CONFIGURE OPENDKIM
 
@@ -62,20 +59,6 @@ COPY spamassassin/spamassassin /etc/default/spamassassin
 
 RUN chmod -R 755 /etc/postfix
 # #1.INSTALL
-# RUN apt install dovecot-imapd dovecot-pop3d dovecot-core -y
-# RUN apt install dovecot-mysql
-# #RUN apt install 
 
-# #2. COPIE DES FICHIERS
-# RUN mkdir /var/log/dovecot.log
-# RUN dovecot/dovecot.conf /etc/dovecot/dovecot.conf
-# RUN dovecot/dovecot-sql.conf.ext /etc/dovecot/dovecot-sql.conf.ext
-# RUN dovecot/dovecot-dict-sql.conf.ext /etc/dovecot/dovecot-dict-sql.conf.ext
 
-# RUN dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf
-# RUN dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10.master.conf 
-# RUN dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf
-# RUN dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf
-# RUN dovecot/conf.d/10-logging.conf /etc/dovecot/conf.d/10-logging.conf
-
-ENTRYPOINT [ "tail" ,"-f" , "/dev/null" ]
+ENTRYPOINT [ "service" ,"start" , "postfix;dovecot;opendkim;msql" ]

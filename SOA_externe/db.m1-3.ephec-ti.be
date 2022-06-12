@@ -17,6 +17,11 @@ b2b         IN      A       176.96.231.201
 
 mail        IN      A       176.96.231.203
 
+; asterisk 
+sip.m1-3.ephec-ti.be.	IN	A	176.96.231.201
+_sip._udp.m1-3.ephec-ti.be.	IN	SRV	0 0 5060 sip.m1-3.ephec-ti.be.
+_sip._tcp.m1-3.ephec-ti.be.	IN	SRV	0 1 5060 sip.m1-3.ephec-ti.be.
+
 ;Record PTR pour SMTP
 176.96.231.203.in-addr.arpa. IN PTR smtp.m1-3.ephec-ti.be
 

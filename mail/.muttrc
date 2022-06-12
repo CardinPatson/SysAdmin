@@ -1,0 +1,31 @@
+set header_cache =~/.mutt/cache/headers
+set certificate_file =~/.mutt/certificates
+set message_cachedir =~/.mutt/cache/bodies
+
+set realname = "cardin.patson@m1-3.ephec-ti.be"
+set from = "cardin.patson@m1-3.ephec-ti.be"
+#set edit_headers=yes
+
+set ssl_starttls=no
+set ssl_force_tls=no
+
+# Imap settings
+#set spoolfile = imap://cardin.patson@mail.m1-3.ephec-ti.be/
+set imap_user = "cardin.patson@m1-3.ephec-ti.be"
+set imap_pass = "1234"
+set folder = "imaps://cardin.patson@m1-3.ephec-ti.be@mail.m1-3.ephec-ti.be:993/"
+set imap_passive
+set imap_check_subscribed
+
+set smtp_url = "smtps://$imap_user:$imap_pass@mail.m1-3.ephec-ti.be:465"
+set smtp_pass = $imap_pass
+
+set spoolfile = "+INBOX"
+set record="+Sent"
+set trash="+Trash"
+set postponed="+Drafts"
+mailboxes =INBOX =Sent =Trash =Drafts =Other
+
+set beep_new
+set editor = "nano"
+#set certificate_file = "~/.mutt/certificates"
