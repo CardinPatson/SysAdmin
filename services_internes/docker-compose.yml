@@ -1,28 +1,35 @@
 version: "2.2" # optional since v1.27.0
 
+# définition des services à exécuter
 services:
   resolver:
+    # construction de l'image de base du conteneur
     build:
       context: ./resolver
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       local_network:
         ipv4_address: 192.168.0.5
+    # stockage des données persistantes
     volumes:
       - ./resolver/named.conf:/etc/bind/named.conf
     container_name: resolver_container
 
   soa_interne:
+    # construction de l'image de base du conteneur
     build:
       context: ./soa_interne
       dockerfile: Dockerfile
-
+    # spécification du réseau auquel se connecter
     networks:
       local_network:
         ipv4_address: 192.168.0.2
+    # définition des ports à exposer et le protocole
     ports:
       - "53:53/tcp"
       - "53:53/udp"
+    # stockage des données persistantes
     volumes:
       - ./soa_interne/named.conf:/etc/bind/named.conf
       - ./soa_interne/db.intranet.woody:/etc/bind/db.intranet.woody
@@ -30,75 +37,93 @@ services:
     container_name: soa_interne_container
 
   intranet_woody:
+    # construction de l'image de base du conteneur
     build:
       context: ./intranet
       dockerfile: Dockerfile
-
+    # spécification du réseau auquel se connecter
     networks:
       local_network:
         ipv4_address: 192.168.0.3
+    # définition des ports à exposer
     ports:
       - "8080:80"
+    # stockage des données persistantes
     volumes:
       - ./intranet/intranet.conf:/etc/apache2/sites-available/intranet.conf
       - ./intranet/index.php:/var/www/html/index.php
     container_name: intranet_container
+
   samba:
+    # construction de l'image de base du conteneur
     build:
       context: ./samba
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       local_network:
         ipv4_address: 192.168.0.4
+    # définition des ports à exposer
     ports:
       - "139:139"
     container_name: samba_container
 
   direction:
+    # construction de l'image de base du conteneur
     build:
       context: ./user/direction
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       direction_network:
         ipv4_address: 192.168.5.2
     container_name: direction_container
 
   atelier:
+    # construction de l'image de base du conteneur
     build:
       context: ./user/atelier
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       atelier_network:
         ipv4_address: 192.168.1.2
     container_name: atelier_container
 
   compta:
+    # construction de l'image de base du conteneur
     build:
       context: ./user/compta
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       compta_network:
         ipv4_address: 192.168.2.2
     container_name: compta_container
 
   commerciaux:
+    # construction de l'image de base du conteneur
     build:
       context: ./user/commerciaux
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       commerciaux_network:
         ipv4_address: 192.168.3.2
     container_name: commerciaux_container
 
   secretariat:
+    # construction de l'image de base du conteneur
     build:
       context: ./user/secretariat
       dockerfile: Dockerfile
+    # spécification du réseau auquel se connecter
     networks:
       secretaire_network:
         ipv4_address: 192.168.4.2
     container_name: secretaire_container
 
+# spécification des réseaux auxquels se connecter
 networks:
   local_network:
     # use the bridge driver, but enable IPv6
